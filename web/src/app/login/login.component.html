@@ -1,18 +1,32 @@
-<div style="background-color: #ffb3b3;"class="form">
-
-  <img class="oneimg" src="http://www.androidpolice.com/wp-content/themes/ap2/ap_resize/ap_resize.php?src=http%3A%2F%2Fwww.androidpolice.com%2Fwp-content%2Fuploads%2F2015%2F10%2Fnexus2cee_Search-Thumb-150x150.png&w=150&h=150&zc=3">
-
-  <div style="color:white;">
-    <h1 style="padding-bottom:20vh">Administrator Login</h1>
-  </div>
-  <!--<button class="mybutton"><img src="/assets/signin.png" /></button>-->
-  <input type='image' src='/assets/signin.png' name='signin-button' value='submit' />
-
-   <div>
-      <a href="https://www.google.com/">Don't have one?</a>
-   </div>
-
-   <div>
-   <a routerLink="/home"><input type= "button" value="home"/></a>
- </div>
+<div *ngIf="isOn==0">
+  <div class="form">
+    <img class="oneimg" src="http://www.androidpolice.com/wp-content/themes/ap2/ap_resize/ap_resize.php?src=http%3A%2F%2Fwww.androidpolice.com%2Fwp-content%2Fuploads%2F2015%2F10%2Fnexus2cee_Search-Thumb-150x150.png&w=150&h=150&zc=3">
+    <div style="color:white;">
+      <h1 style="padding-bottom:10vh">Admin Log In</h1>
     </div>
+    <div class="input-field">
+      <input id="password" type="password" class="validate" [(ngModel)]="adminCode">
+      <label for="password">Admin Acess Password</label>
+    </div>
+    <input (click)="logInAsAdmin()" type='image' src='/assets/img/signin.png' name='signin-button' value='submit' />
+    <div>
+      <div class="anchor" (click)="isOn=1;adminCode=null;">Log In as User</div>
+    </div>
+  </div>
+</div>
+
+
+
+<div>
+  <div *ngIf="isOn==1" class="form">
+    <img class="oneimg" src="http://www.androidpolice.com/wp-content/themes/ap2/ap_resize/ap_resize.php?src=http%3A%2F%2Fwww.androidpolice.com%2Fwp-content%2Fuploads%2F2015%2F10%2Fnexus2cee_Search-Thumb-150x150.png&w=150&h=150&zc=3">
+    <div style="color:white;">
+      <h1 style="padding-bottom:15vh">User Login</h1>
+    </div>
+    <input (click)="logInAsUser()" type='image' src='/assets/img/signin.png' name='signin-button' value='submit' />
+    <div>
+      <div class="anchor" (click)="isOn=0">Log In as Admin</div>
+      <a class="anchor" href="https://accounts.google.co.in/" style="padding-left: 2em">Don't have one?</a>
+    </div>
+  </div>
+</div>
