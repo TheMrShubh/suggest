@@ -104,10 +104,5 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  logOut() {
-    console.log("Logging out..");
-    this.afAuth.auth.signOut();
-  }
-
   ngOnInit() {}
 }

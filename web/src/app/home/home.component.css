@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "pacifico";
+  src: url("/assets/fonts/Pacifico.ttf") format("truetype"),
+    url("/assets/fonts/pacifico-webfont.woff2") format("woff2"),
+    url("/assets/fonts/pacifico-webfont.woff") format("woff");
+}
+
+.logOut {
+  padding-left: 5em;
+}
+
+.title {
+  font-family: "pacifico";
+  font-size: 50px;
+  text-align: center;
+  margin-top: 10vh;
+}

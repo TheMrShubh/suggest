@@ -1,8 +1,29 @@
-<nav>
-  <div class="nav-wrapper light-blue darken-4">
-    <a href="#!" class="brand-logo" style="padding-left: 10px;">Name</a>
-    <ul class="right hide-on-med-and-down">
-      <li style="padding-top:15px"><a href="/login" class="waves-effect waves-light pink btn">Login</a></li>
-    </ul>
+<div>
+  <nav>
+    <div class="nav-wrapper light-blue darken-4">
+      <a href="#!" class="brand-logo" style="padding-left: 10px;">Name</a>
+      <ul class="right hide-on-med-and-down">
+        <li *ngIf="afAuth.user | async as user;else showLogin" style="padding-top:15px">
+          <a (click)="logOut()" class="waves-effect waves-light pink btn">LogOut</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<div *ngIf="afAuth.user | async as user;">
+  <div class="title">
+    Hi! {{this.user.displayName}}
   </div>
-</nav>
+</div>
+
+<ng-template #showLogin>
+  <div style="padding-top:15px">
+    <a href="/login" class="waves-effect waves-light pink btn">LOGIN</a>
+  </div>
+</ng-template>
+
+<ng-template #userInfo>
+  <div class="title">
+    test
+  </div>
+</ng-template>
