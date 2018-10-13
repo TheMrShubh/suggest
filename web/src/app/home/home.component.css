@@ -19,3 +19,9 @@
 .width {
   width: 100vw;
 }
+
+.admin {
+  font-family: "roboto";
+  font-size: 20px;
+  color: #e91e63;
+}

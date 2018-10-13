@@ -1,7 +1,12 @@
 <div>
   <nav>
     <div class="nav-wrapper light-blue darken-4">
-      <a href="/home" class="brand-logo" style="padding-left: 10px;"><i class="material-icons">donut_small</i>collegelink</a>
+      <a href="/home" class="brand-logo" style="padding-left: 10px;"><i class="material-icons">donut_small</i>collegelink
+        <span *ngIf="admins!=undefined">
+          <span *ngIf="checkAdmin()" class="admin">admin</span>
+        </span>
+      </a>
+
       <ul class="right hide-on-med-and-down">
         <li style="padding-top:15px">
           <a (click)="logOut()" class="waves-effect waves-light pink btn">LogOut</a>

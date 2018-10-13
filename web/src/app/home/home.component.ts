@@ -3,6 +3,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import * as firebase from "firebase/app";
 import { Router } from "@angular/router";
 import { PostComponent } from "../post/post.component";
+import { AngularFireDatabase } from "angularfire2/database";
 
 @Component({
   selector: "app-home",
@@ -12,9 +13,25 @@ import { PostComponent } from "../post/post.component";
 export class HomeComponent implements OnInit {
   user: any;
   display = "none";
-  constructor(public afAuth: AngularFireAuth, private router: Router) {
+  admins: any;
+  constructor(public db: AngularFireDatabase, public afAuth: AngularFireAuth, private router: Router) {
     this.user = firebase.auth().currentUser;
     console.log(this.user);
+    this.user = firebase.auth().currentUser;
+    db.list("/Admins")
+      .valueChanges()
+      .subscribe(admin => {
+        this.admins = admin;
+      });
+    }
+
+  checkAdmin(): boolean {
+    for (let admin of this.admins) {
+      if (admin == this.user.uid) {
+        return true;
+      }
+      return false;
+    }
   }
 
   logOut() {
@@ -27,7 +44,4 @@ export class HomeComponent implements OnInit {
     this.router.navigate(["/newpost"]);
   }
 
-  ngOnInit() {
-    this.user = firebase.auth().currentUser;
-  }
-}
+  ngOnInit() {}
