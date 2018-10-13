@@ -1,3 +1,4 @@
 -Modal not working
 -Filter options unavailable
 -Thread limit not defined
+-Dislike isn't possible

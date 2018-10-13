@@ -1,4 +1,4 @@
-<div *ngIf="isOn==0;else detailView">
+<div *ngIf="isOn==0">
   <div *ngFor="let post of suggestions">
     <div class="row">
       <div class="col m12">
@@ -18,15 +18,15 @@
   </div>
 </div>
 
-<ng-template #detailView>
+<div *ngIf="isOn==1">
   <div class="row">
     <div class="col m12">
       <div class="card white">
         <div class="card-content black-text" style="text-align: center">
           <span class="card-title big-title">{{selectedPost.title}}</span>
-          <button class="btn-floating btn-small waves-effect waves-light pink"><i class="material-icons">arrow_upward</i></button>
-          <span class="like">98</span>
-          <button class="btn-floating btn-small waves-effect waves-light pink"><i class="material-icons">chat</i></button>
+          <button (click)="like()" class="btn-floating btn-small waves-effect waves-light pink"><i class="material-icons">arrow_upward</i></button>
+          <span class="like">{{numLikes}}</span>
+          <button (click)="isOn=2" class="btn-floating btn-small waves-effect waves-light pink"><i class="material-icons">chat</i></button>
           <br>
           <div>
             Date Posted: {{selectedPost.date}}
@@ -35,8 +35,38 @@
           <div style="text-align: left">
             {{selectedPost.body}}
           </div>
+          <div class="med-title">Comments</div>
+          <div>
+            <ul *ngFor="let i of comments" style="text-align: left">
+              <li><i class="small material-icons" style="font-size: 15px;">done_all</i> {{i.body}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-action">
+          <div (click)="isOn=0" class="getHand pink-text">Close</div>
         </div>
       </div>
     </div>
   </div>
-</ng-template>
+</div>
+
+<div *ngIf="isOn==2">
+  <div class="row">
+    <div class="col m12">
+      <div class="card white">
+        <div class="card-content black-text">
+          <div class="big-title" style="padding-bottom:20px">New Comment</div>
+          <div class="input-field">
+            <textarea [(ngModel)]="commentText" id="textarea1" class="materialize-textarea"></textarea>
+            <button (click)="comment()" class="btn waves-effect waves-light pink">Comment
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </div>
+        <div class="card-action">
+          <div (click)="isOn=1" class="getHand pink-text">Back</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
