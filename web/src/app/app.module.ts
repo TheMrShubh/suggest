@@ -12,9 +12,11 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { FormsModule } from "@angular/forms";
+import { AuthService } from "./auth.service";
+import { NewPostComponent } from './new-post/new-post.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, PostComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent, PostComponent, NewPostComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,7 +26,7 @@ import { FormsModule } from "@angular/forms";
     AngularFireDatabaseModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -2,21 +2,33 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
 import { LoginComponent } from "./login/login.component";
+import { PostComponent } from "./post/post.component";
+import { NewPostComponent } from "./new-post/new-post.component";
+import { AuthService } from "./auth.service";
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "home",
+    redirectTo: "login",
     pathMatch: "full"
   },
 
   {
     path: "home",
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthService]
   },
   {
     path: "login",
     component: LoginComponent
+  },
+  {
+    path: "post",
+    component: PostComponent
+  },
+  {
+    path: "newpost",
+    component: NewPostComponent
   }
 ];
 

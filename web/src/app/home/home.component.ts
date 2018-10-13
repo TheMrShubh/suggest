@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 import * as firebase from "firebase/app";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-home",
@@ -9,22 +10,15 @@ import * as firebase from "firebase/app";
 })
 export class HomeComponent implements OnInit {
   user: any;
-  constructor(public afAuth: AngularFireAuth) {
+  constructor(public afAuth: AngularFireAuth, private router: Router) {
     this.user = firebase.auth().currentUser;
-  }
-
-  isLoggedIn() {
-    if (this.user == null) {
-      console.log("null");
-      return false;
-    } else {
-      return true;
-    }
+    console.log(this.user);
   }
 
   logOut() {
     console.log("Logging out..");
     this.afAuth.auth.signOut();
+    this.router.navigate(["/login"]);
   }
   ngOnInit() {
     this.user = firebase.auth().currentUser;
