@@ -10,6 +10,7 @@
     </div>
   </nav>
 </div>
+
 <div class="container">
   <!--user information-->
   <div class="row">
@@ -20,7 +21,9 @@
           <img [src]="this.user.photoURL">
         </div>
         <div class="card-stacked">
-          <a class="btn-floating btn-large halfway-fab waves-effect waves-light pink"><i class="material-icons">add</i></a>
+          <button (click)="newPost()" class="btn-floating btn-large halfway-fab waves-effect waves-light pink">
+            <i class="material-icons">add</i>
+          </button>
           <div class="card-content">
             User Information<br><br>
             <span class="title">{{this.user.displayName}}</span>
@@ -29,6 +32,12 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col m2"></div>
+    <div class="col m8">
+      <app-post></app-post>
     </div>
   </div>
 </div>

@@ -4,8 +4,21 @@
 .demo-card-wide > .mdl-card__title {
   color: #fff;
   height: 120px;
-  background-color: #ffb3b3 ;
+  background-color: #ffb3b3;
 }
 .demo-card-wide > .mdl-card__menu {
   color: #fff;
+}
+
+.getHand:hover {
+  cursor: pointer;
+}
+
+.big-title {
+  font-size: 30px;
+}
+
+.like {
+  padding: 10px;
+  font-size: 20px;
 }

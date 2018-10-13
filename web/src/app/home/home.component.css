@@ -15,3 +15,7 @@
   text-align: center;
   margin-top: 10vh;
 }
+
+.width {
+  width: 100vw;
+}

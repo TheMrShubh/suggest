@@ -1,14 +1,42 @@
-<div class="row">
-  <div class="col m12">
-    <div class="card white">
-      <div class="card-content black-text">
-        <span class="card-title">Card Title</span>
-        <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
-      </div>
-      <div class="card-action">
-        <a (click)="printSuggestions()" class=" pink-text" href="/post">View More</a>
+<div *ngIf="isOn==0;else detailView">
+  <div *ngFor="let post of suggestions">
+    <div class="row">
+      <div class="col m12">
+        <div class="card white">
+          <div class="card-content black-text">
+            <span class="card-title">{{post.title}}</span>
+            <div>
+              {{post.body}}
+            </div>
+          </div>
+          <div class="card-action">
+            <div (click)="onSelect(post)" class="getHand pink-text">View More</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #detailView>
+  <div class="row">
+    <div class="col m12">
+      <div class="card white">
+        <div class="card-content black-text" style="text-align: center">
+          <span class="card-title big-title">{{selectedPost.title}}</span>
+          <button class="btn-floating btn-small waves-effect waves-light pink"><i class="material-icons">arrow_upward</i></button>
+          <span class="like">98</span>
+          <button class="btn-floating btn-small waves-effect waves-light pink"><i class="material-icons">chat</i></button>
+          <br>
+          <div>
+            Date Posted: {{selectedPost.date}}
+          </div>
+          <br><br>
+          <div style="text-align: left">
+            {{selectedPost.body}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

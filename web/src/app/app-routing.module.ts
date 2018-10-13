@@ -28,7 +28,8 @@ const routes: Routes = [
   },
   {
     path: "newpost",
-    component: NewPostComponent
+    component: NewPostComponent,
+    canActivate: [AuthService]
   }
 ];
 
