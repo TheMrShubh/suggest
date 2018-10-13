@@ -28,6 +28,10 @@
   font-size: 20px;
 }
 
+.adminResponse {
+  color: #e91e63;
+}
+
 #textarea1:focus {
   border-bottom: 1px solid #e91e63;
   box-shadow: 0 1px 0 0 #e91e63;

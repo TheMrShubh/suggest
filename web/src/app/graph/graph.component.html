@@ -1,0 +1,19 @@
+<div class="container" style="width:50%" *ngIf="chart">
+  <div class="card white">
+    <div class="card-content black-text">
+      <div class="title">collegelink Analytics</div>
+      <div *ngIf="chart">
+        <canvas id="canvas">{{ chart }}</canvas>
+      </div>
+    </div>
+    <div *ngIf="suggestions!=undefined" class="card-action" style="padding-left: 30%">
+      <button (click)="goHome()" class="btn waves-effect waves-light pink">Back
+      </button>
+      <span style="padding-right:20px"></span>
+      <button (click)=getArray() class="btn waves-effect waves-light pink">Generate
+        Analytics
+        <i class="big material-icons right">memory</i>
+      </button>
+    </div>
+  </div>
+</div>

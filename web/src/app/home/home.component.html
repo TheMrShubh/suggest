@@ -8,6 +8,11 @@
       </a>
 
       <ul class="right hide-on-med-and-down">
+        <span *ngIf="admins!=undefined">
+          <li style="padding-top:15px">
+            <a *ngIf="checkAdmin()" href="/analytics" class="waves-effect waves-light pink btn">Analytics</a>
+          </li>
+        </span>
         <li style="padding-top:15px">
           <a (click)="logOut()" class="waves-effect waves-light pink btn">LogOut</a>
         </li>

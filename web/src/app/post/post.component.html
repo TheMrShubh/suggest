@@ -25,7 +25,7 @@
         <div class="card-content black-text" style="text-align: center">
           <span class="card-title big-title">{{selectedPost.title}}</span>
           <button (click)="like()" class="btn-floating btn-small waves-effect waves-light pink"><i class="material-icons">arrow_upward</i></button>
-          <span class="like">{{numLikes}}</span>
+          <span class="like">{{selectedPost.likes}}</span>
           <button (click)="isOn=2" class="btn-floating btn-small waves-effect waves-light pink"><i class="material-icons">chat</i></button>
           <br>
           <div>
@@ -36,9 +36,12 @@
             {{selectedPost.body}}
           </div>
           <div class="med-title">Comments</div>
-          <div>
+          <div *ngIf="admins!=undefined && user!=undefined">
             <ul *ngFor="let i of comments" style="text-align: left">
-              <li><i class="small material-icons" style="font-size: 15px;">done_all</i> {{i.body}}</li>
+              <li *ngIf="checkAdmin(i.uid)" class="adminResponse"><i class="small material-icons" style="font-size: 15px;">done_all</i>
+                Admin Response: {{i.body}}</li>
+              <li *ngIf="!checkAdmin(i.uid)"><i class="small material-icons" style="font-size: 15px;">done_all</i>
+                {{i.body}}</li>
             </ul>
           </div>
         </div>

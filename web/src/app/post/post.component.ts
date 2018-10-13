@@ -11,19 +11,27 @@ import * as firebase from "firebase/app";
 })
 export class PostComponent implements OnInit {
   suggestions: any;
+  admins: any;
   selectedPost: NewPost;
   isOn = 0;
   likes: any;
   comments: any;
   numLikes: number;
   commentText: String;
+  user;
   constructor(public db: AngularFireDatabase) {
     console.log("here");
+    this.user = firebase.auth().currentUser;
     db.list("/Suggestions")
       .valueChanges()
       .subscribe(suggestion => {
         this.suggestions = suggestion;
         console.log(this.suggestions);
+      });
+    db.list("/Admins")
+      .valueChanges()
+      .subscribe(admin => {
+        this.admins = admin;
       });
   }
 
@@ -37,7 +45,8 @@ export class PostComponent implements OnInit {
       .list("/Likes/" + key)
       .valueChanges()
       .subscribe(like => {
-        this.numLikes = like.length;
+        this.selectedPost.likes = like.length;
+        this.updateLikes();
         this.likes = like;
         console.log(this.likes);
       });
@@ -68,8 +77,18 @@ export class PostComponent implements OnInit {
         .push(firebase.auth().currentUser.uid);
       console.log("check");
     }
-    //var updates = {};
-    //updates["/Likes/" + key] = ;
+
+    //this.selectedPost.likes = this.numLikes;
+    this.updateLikes();
+  }
+
+  updateLikes() {
+    var updates = {};
+    updates["/Suggestions/" + this.selectedPost.key] = this.selectedPost;
+    firebase
+      .database()
+      .ref()
+      .update(updates);
   }
 
   comment() {
@@ -83,8 +102,13 @@ export class PostComponent implements OnInit {
     this.isOn = 1;
   }
 
-  check() {
-    console.log(this.comments);
+  checkAdmin(uid) {
+    for (let admin of this.admins) {
+      if (admin == uid) {
+        return true;
+      }
+    }
+    return false;
   }
 
   ngOnInit() {}

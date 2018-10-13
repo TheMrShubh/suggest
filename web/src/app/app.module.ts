@@ -13,10 +13,18 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { FormsModule } from "@angular/forms";
 import { AuthService } from "./auth.service";
-import { NewPostComponent } from './new-post/new-post.component';
+import { NewPostComponent } from "./new-post/new-post.component";
+import { GraphComponent } from './graph/graph.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, PostComponent, NewPostComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    PostComponent,
+    NewPostComponent,
+    GraphComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

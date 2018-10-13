@@ -4,6 +4,7 @@ export class NewPost {
   date: String;
   uid: String;
   key: String;
+  likes: number;
 
   constructor() {
     this.title = null;
@@ -11,5 +12,6 @@ export class NewPost {
     this.date = null;
     this.uid = null;
     this.key = null;
+    this.likes = 0;
   }
 }

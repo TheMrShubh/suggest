@@ -14,7 +14,11 @@ export class HomeComponent implements OnInit {
   user: any;
   display = "none";
   admins: any;
-  constructor(public db: AngularFireDatabase, public afAuth: AngularFireAuth, private router: Router) {
+  constructor(
+    public db: AngularFireDatabase,
+    public afAuth: AngularFireAuth,
+    private router: Router
+  ) {
     this.user = firebase.auth().currentUser;
     console.log(this.user);
     this.user = firebase.auth().currentUser;
@@ -23,15 +27,15 @@ export class HomeComponent implements OnInit {
       .subscribe(admin => {
         this.admins = admin;
       });
-    }
+  }
 
   checkAdmin(): boolean {
     for (let admin of this.admins) {
       if (admin == this.user.uid) {
         return true;
       }
-      return false;
     }
+    return false;
   }
 
   logOut() {
@@ -45,3 +49,4 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {}
+}
