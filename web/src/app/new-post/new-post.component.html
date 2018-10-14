@@ -1,6 +1,6 @@
 <div class="form">
   <div style="padding-bottom:5vh">NEW SUGGESTION</div>
-  <div class="container">
+  <div class="container" style="width:100%">
     <div class="row">
       <div class="input-field col s12">
         <input [(ngModel)]="title" id="title" type="text" class="validate">
@@ -10,13 +10,17 @@
     <div class="row">
       <div class="input-field col s12">
         <textarea [(ngModel)]="body" id="textarea1" type="text" class="materialize-textarea"></textarea>
-        <label for="textarea1">Textarea</label>
+        <label for="textarea1">Description</label>
       </div>
     </div>
     <div class="row">
-      <div class="col m6"></div>
-      <div class="col m6">
-        <button (click)="addSuggestion()" class="btn waves-effect waves-light pink" type="submit">Submit
+      <div class="col m5"></div>
+      <div class="col m3">
+        <button (click)="goHome()" class="btn waves-effect waves-light pink" type="submit">Back
+        </button>
+      </div>
+      <div class="col m4">
+        <button (click)="addSuggestion()" class="btn waves-effect waves-light pink" type="submit">Post
           <i class="material-icons right">send</i>
         </button>
       </div>
