@@ -14,6 +14,18 @@ The project aims to make an intuitive website to bridge the gap between the admi
 5. Materialize CSS = http://materializecss.com/
 
 
+### Screens ###
+#### Login Demo ####
+![](./Documentation/SS/login.png)
+
+#### Charts Demo ####
+![](./Documentation/SS/analytics.png)
+
+#### Post Demo ####
+![](./Documentation/SS/detailed%20view.png)
+
 ### Acknowledgements ###
 * Thanks to @sohaamutsaddi for handling the documentation
 * This idea was inspired by the genearl lack of communication between the Management and students of Educational Institues 
+
+
